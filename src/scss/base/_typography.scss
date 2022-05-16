@@ -2,9 +2,21 @@
 
 $type-scale: (
   small: (
-    900: 2rem,
+    700: 0.875rem,
+    800: 1.125rem,
+    900: 2.5rem,
   ),
   large: (
-    900: 3.5rem,
+    800: 0.75rem,
   )
 );
+
+
+.fw-bold{font-weight: 700;}
+
+.fw-regular{font-weight: 400;}
+
+.t-primary{
+  color: hsl(220, 98%, 61%);
+}
+

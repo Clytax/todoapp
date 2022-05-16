@@ -1,1 +1,112 @@
 // Default
+
+.app-light{
+  background:   var(--clr-l-neutral-100);
+}
+
+.drag-light{
+  color: var(--clr-l-neutral-400);
+}
+
+.item-light{
+  background: white;
+  border-bottom: 1px solid var(--clr-d-neutral-200);
+}
+
+.item__text-light{
+  color: var(--clr-l-neutral-500);
+}
+
+
+.item__button__completed-light{
+
+}
+
+.item__button-light{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid var(--clr-d-neutral-200);
+  &:hover{
+    cursor: pointer;
+
+    background: 
+    linear-gradient(white,white) padding-box,
+    linear-gradient(to bottom right,hsl(192, 100%, 67%) ,  hsl(280, 87%, 65%)) border-box;
+  border-radius: 50em;
+  border: 1px solid transparent;
+}
+
+}
+
+.todo__list-light{
+  background: white;
+}
+
+.todolist__state-light{
+
+  &:hover{
+    color: var(--clr-l-neutral-500);
+  }
+}
+
+.todolist__completed-light{
+  color: var(--clr-l-neutral-400);
+  
+  &:hover{
+    color: var(--clr-l-neutral-500);
+
+  }
+}
+
+.input-light{
+  background: white;
+}
+
+.input__form-light{
+  
+}
+
+.input__input-light{
+  flex-grow: 1;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Josefin Sans', sans-serif;
+
+  input{
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--clr-d-neutral-400);
+    font-size: var(--fs-800);
+    font-weight: 300;
+
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.input__button-light{
+  flex: .15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button{
+    width: 24px;
+    height: 24px;
+    aspect-ratio: 1;
+    background: transparent;
+    border: 1px solid var(--clr-d-neutral-200);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

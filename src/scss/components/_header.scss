@@ -1,0 +1,12 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+
+  &-h1{
+    font-size: var(--fs-900);
+    letter-spacing: 15px;
+
+  }
+}

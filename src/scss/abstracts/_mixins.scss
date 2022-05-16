@@ -5,10 +5,8 @@
 @use 'media-query' as *;
 
 :root {
-  @each $color, $shades in $colors{
-    @each $shade, $value in $shades{
-      --clr-#{$color}-#{$shade}: #{$value};
-    }
+  @each $name, $value in $colors{
+    --clr-#{$name}: #{$value};
   }
 
   @each $screen-size, $font-size in $type-scale{
@@ -29,14 +27,33 @@
   }
 }
 
-@each $color, $shades in $colors{
-  @each $shade, $value in $shades {
-    .text-#{$color}-#{$shade} {
-      color: $value;
+@each $screen-size, $font-size in $type-scale{
+  @if $screen-size == small{
+    @each $size, $value in $font-size{
+      .fs-#{$size}{
+        font-size: #{$value};
+      }
     }
-    .bg-#{$color}-#{$shade} {
-      background-color: $value;
+  } else {
+    @include mq(small){
+      @each $size,
+      $value in $font-size {
+        .fs-#{$size}{
+          font-size: #{$value};
+        }
+      }
+      
     }
+
+  }
+}
+
+@each $name, $value in $colors{
+  .text-#{$name} {
+    color: #{$value};
+  }
+  .bg-#{$name} {
+    background-color: #{$value};
   }
 }
 

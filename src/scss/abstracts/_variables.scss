@@ -1,7 +1,24 @@
 // SCSS Variables
 
+$colors: (
+  primary: hsl(220, 98%, 61%),
+  l-neutral-100: #fafafa,
+  l-neutral-200:  #e4e5f1,
+  l-neutral-300: #d2d3db,
+  l-neutral-400: #9394a5,
+  l-neutral-500: #484b6a,
 
-:root {
+  d-neutral-100: #e4e5f1,
+  d-neutral-200: #cacde8,
+  d-neutral-300: #777a92,
+  d-neutral-400:#4d5066,
+  d-neutral-500: #25273c,
+  d-neutral-600: #161722,
+
+
+);
+
+.gradient-bg{
+  background-color: linear-gradient(to bottom right,hsl(192, 100%, 67%) ,  hsl(280, 87%, 65%));
 
 }
-

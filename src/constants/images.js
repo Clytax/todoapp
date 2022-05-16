@@ -1,3 +1,7 @@
-// import test from '../assets/logo512.png';
+import check from '../assets/icon-check.svg';
+import cross from '../assets/icon-cross.svg';
+import moon from '../assets/icon-moon.svg';
+import sun from '../assets/icon-sun.svg';
 
-// export { test };
+// Export
+export { check, cross, moon, sun };

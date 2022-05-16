@@ -1,0 +1,43 @@
+.todolist{
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+
+
+
+
+
+}
+
+.todolist__bottom{
+  padding: 1.5rem 1.8rem;
+
+
+
+
+}
+
+.todolist__bottom__mid{
+
+  &-selection{
+    cursor: pointer;
+
+    &:hover{
+      color: var(--clr-d-neutral-100);
+    }
+
+  }
+}
+
+.todolist-active{
+  color: var(--clr-primary);
+}
+
+.todolist__bottom__right{
+  cursor: pointer;
+
+  &:hover{
+    color: var(--clr-d-neutral-100);
+  }
+}
