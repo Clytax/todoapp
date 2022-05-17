@@ -13,10 +13,14 @@
     height: 37.5%;
     top: 0;
 
-    background-image: url("../../assets/bg-desktop-dark.jpg");
+    background-image: url("../../assets/bg-mobile-dark.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    @media(min-width: 45rem){
+      background-image: url("../../assets/bg-desktop-dark.jpg");
+    }
   
   }
 }

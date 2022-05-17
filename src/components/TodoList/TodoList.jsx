@@ -3,6 +3,9 @@ import useTodoStore from '../../Store/TodoStore.js';
 import useThemeStore from '../../Store/ThemeStore.js';
 
 // DND
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
+import MediaQuery from 'react-responsive';
 
 import { Item } from '../';
 
@@ -61,60 +64,141 @@ const TodoList = () => {
 
   return (
     <div className="todolist">
-      <div className="todolist__container">
-        {filteredTodo.map((todo, key) => (
-          <Item
-            key={key}
-            text={todo.text}
-            isCompleted={todo.Completed}
-            id={todo.id}
-          />
-        ))}
-      </div>
-      <div
-        className={`todolist__bottom flex items-center justify-space-between bg-d-neutral-500 ${
-          theme === 'light' && 'todo__list-light'
-        }`}
-      >
-        <div className="todolist__bottom__left text-d-neutral-300 fs-700">
-          {amountTodo} items left
-        </div>
-        <div className="todolist__bottom__mid flex fs-700">
-          <div
-            className={`todolist__bottom__mid-selection fw-bold text-d-neutral-300 ${
-              activeState === 'all' && 'todolist-active'
-            } ${theme === 'light' && 'todolist__state-light'}`}
-            onClick={() => setActiveState('all')}
-          >
-            All
-          </div>
-          <div
-            className={`todolist__bottom__mid-selection fw-bold text-d-neutral-300 ${
-              activeState === 'active' && 'todolist-active'
-            } ${theme === 'light' && 'todolist__state-light '}`}
-            onClick={() => setActiveState('active')}
-          >
-            Active
-          </div>
-          <div
-            className={`todolist__bottom__mid-selection fw-bold  text-d-neutral-300 ${
-              activeState === 'completed' && 'todolist-active'
-            } ${theme === 'light' && 'todolist__state-light'}`}
-            onClick={() => setActiveState('completed')}
-          >
-            Completed
-          </div>
-        </div>
+      <DragDropContext>
+        <Droppable droppableId="todo__list">
+          {(provider) => (
+            <ul
+              {...provider.droppableProps}
+              ref={provider.innerRef}
+              className="todolist__container"
+            >
+              {console.log(provider)}
 
+              {filteredTodo.map((todo, key) => {
+                return (
+                  <Draggable
+                    key={todo.id}
+                    draggableId={`${todo.id}`}
+                    index={key}
+                  >
+                    {(provider) => (
+                      <Item
+                        ref={provider.innerRef}
+                        {...provider.draggableProps}
+                        {...provider.dragHandleProps}
+                        key={key}
+                        text={todo.text}
+                        isCompleted={todo.Completed}
+                        id={todo.id}
+                      />
+                    )}
+                  </Draggable>
+                );
+              })}
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
+
+      <MediaQuery maxWidth={768}>
         <div
-          className={`todolist__bottom__right text-d-neutral-300 fs-700 ${
-            theme === 'light' && 'todolist__completed-light'
+          className={`todolist__bottom flex items-center justify-space-between bg-d-neutral-500 ${
+            theme === 'light' && 'todo__list-light'
           }`}
-          onClick={() => removeCompleted()}
         >
-          Clear Completed
+          <div className="todolist__bottom__left text-d-neutral-300 fs-700">
+            {amountTodo} items left
+          </div>
+
+          <div
+            className={`todolist__bottom__right text-d-neutral-300 fs-700 ${
+              theme === 'light' && 'todolist__completed-light'
+            }`}
+            onClick={() => removeCompleted()}
+          >
+            Clear Completed
+          </div>
         </div>
-      </div>
+        <div
+          className={` flex items-center justify-center ${
+            theme === 'dark' && 'todolist__mobile__bottom'
+          } ${theme === 'light' && 'todolist__mobile__bottom-light'}`}
+        >
+          <div className="todolist__bottom__mid flex fs-700 ">
+            <div
+              className={`todolist__bottom__mid-selection fw-bold text-d-neutral-300 ${
+                activeState === 'all' && 'todolist-active'
+              } ${theme === 'light' && 'todolist__state-light'}`}
+              onClick={() => setActiveState('all')}
+            >
+              All
+            </div>
+            <div
+              className={`todolist__bottom__mid-selection fw-bold text-d-neutral-300 ${
+                activeState === 'active' && 'todolist-active'
+              } ${theme === 'light' && 'todolist__state-light '}`}
+              onClick={() => setActiveState('active')}
+            >
+              Active
+            </div>
+            <div
+              className={`todolist__bottom__mid-selection fw-bold  text-d-neutral-300 ${
+                activeState === 'completed' && 'todolist-active'
+              } ${theme === 'light' && 'todolist__state-light'}`}
+              onClick={() => setActiveState('completed')}
+            >
+              Completed
+            </div>
+          </div>
+        </div>
+      </MediaQuery>
+
+      <MediaQuery minWidth={768}>
+        <div
+          className={`todolist__bottom flex items-center justify-space-between bg-d-neutral-500 ${
+            theme === 'light' && 'todo__list-light'
+          }`}
+        >
+          <div className="todolist__bottom__left text-d-neutral-300 fs-700">
+            {amountTodo} items left
+          </div>
+          <div className="todolist__bottom__mid flex fs-700">
+            <div
+              className={`todolist__bottom__mid-selection fw-bold text-d-neutral-300 ${
+                activeState === 'all' && 'todolist-active'
+              } ${theme === 'light' && 'todolist__state-light'}`}
+              onClick={() => setActiveState('all')}
+            >
+              All
+            </div>
+            <div
+              className={`todolist__bottom__mid-selection fw-bold text-d-neutral-300 ${
+                activeState === 'active' && 'todolist-active'
+              } ${theme === 'light' && 'todolist__state-light '}`}
+              onClick={() => setActiveState('active')}
+            >
+              Active
+            </div>
+            <div
+              className={`todolist__bottom__mid-selection fw-bold  text-d-neutral-300 ${
+                activeState === 'completed' && 'todolist-active'
+              } ${theme === 'light' && 'todolist__state-light'}`}
+              onClick={() => setActiveState('completed')}
+            >
+              Completed
+            </div>
+          </div>
+
+          <div
+            className={`todolist__bottom__right text-d-neutral-300 fs-700 ${
+              theme === 'light' && 'todolist__completed-light'
+            }`}
+            onClick={() => removeCompleted()}
+          >
+            Clear Completed
+          </div>
+        </div>
+      </MediaQuery>
     </div>
   );
 };
