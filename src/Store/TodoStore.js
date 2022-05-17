@@ -4,7 +4,10 @@ import { persist } from 'zustand/middleware';
 const useTodoStore = create(
   persist(
     (set, get) => ({
-      todos: [],
+      todos: [
+        { text: 'Learn React', Completed: false, id: 1 },
+        { text: 'Learn Zustand', Completed: false, id: 2 },
+      ],
 
       addTodo: (todo) =>
         set((prevState) => ({
